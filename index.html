@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pitkin County Dry Goods — Shopify POS TCO & Contract Options</title>
+<style>
+  :root {
+    --pine: #22463C;
+    --pine-dark: #16302A;
+    --brass: #B58B4C;
+    --brass-dark: #8C6A38;
+    --shopify-green: #008060;
+    --ink: #1A1A1A;
+    --ink-soft: #4A4A4A;
+    --ink-muted: #777;
+    --bg: #FFFFFF;
+    --bg-soft: #F7F5F0;
+    --border: #E4DFD4;
+    --positive: #008060;
+    --warn: #B4690E;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: var(--bg); color: var(--ink);
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 16px; line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  .container { max-width: 1080px; margin: 0 auto; padding: 0 56px; }
+
+  /* HERO */
+  .hero { background: var(--pine); color: white; padding: 80px 0 70px; position: relative; overflow: hidden; }
+  .hero::before { content:''; position:absolute; top:0; left:0; right:0; height:6px; background: var(--brass); }
+  .hero::after { content:''; position:absolute; bottom:0; left:0; right:0; height:6px; background: var(--brass); }
+  .hero-tag { font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:var(--brass); font-weight:700; margin-bottom:24px; }
+  .hero h1 { font-family: Georgia,'Times New Roman',serif; font-size:54px; line-height:1.1; margin:0 0 18px; font-weight:400; letter-spacing:-0.01em; }
+  .hero h1 .brand { color: var(--brass); font-style: italic; }
+  .hero-subtitle { font-size:19px; color:rgba(255,255,255,0.85); max-width:760px; margin:0 0 36px; line-height:1.45; }
+  .hero-meta { display:flex; gap:44px; border-top:1px solid rgba(181,139,76,0.35); padding-top:24px; margin-top:12px; font-size:13px; flex-wrap:wrap; }
+  .hero-meta div { display:flex; flex-direction:column; }
+  .hero-meta .label { font-size:10px; letter-spacing:0.18em; text-transform:uppercase; color:var(--brass); margin-bottom:6px; font-weight:700; }
+  .hero-meta .value { color:white; font-weight:500; }
+
+  /* SECTIONS */
+  section { padding:64px 0; border-bottom:1px solid var(--border); }
+  section:last-of-type { border-bottom:none; }
+  .section-label { font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:var(--pine); font-weight:700; margin-bottom:14px; }
+  h2 { font-family:Georgia,'Times New Roman',serif; font-size:36px; line-height:1.15; margin:0 0 28px; font-weight:400; color:var(--ink); letter-spacing:-0.005em; }
+  h3 { font-family:Georgia,'Times New Roman',serif; font-size:22px; margin:36px 0 14px; font-weight:600; color:var(--pine); }
+  p { margin:0 0 16px; color:var(--ink-soft); }
+  .lede { font-size:19px; line-height:1.5; color:var(--ink); max-width:840px; margin-bottom:32px; }
+  .lede strong { color:var(--pine); font-weight:600; }
+
+  /* FORCING FUNCTIONS */
+  .forcing-functions { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin:36px 0 32px; }
+  .force { background:white; border:1px solid var(--border); border-top:4px solid var(--pine); padding:26px 24px 24px; border-radius:2px; }
+  .force .num { font-family:Georgia,serif; font-size:11px; letter-spacing:0.2em; color:var(--brass-dark); font-weight:700; margin-bottom:10px; }
+  .force h4 { font-family:Georgia,serif; font-size:19px; font-weight:600; color:var(--pine); margin:0 0 12px; line-height:1.25; }
+  .force p { font-size:14px; line-height:1.5; margin:0; color:var(--ink-soft); }
+  .case-closer { background:var(--bg-soft); border-left:4px solid var(--brass); padding:24px 32px; margin-top:32px; border-radius:2px; }
+  .case-closer p { font-family:Georgia,serif; font-size:18px; line-height:1.5; color:var(--ink); margin:0; }
+  .case-closer p strong { color:var(--pine); font-weight:600; }
+
+  /* STAT CARDS */
+  .headline-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin:36px 0 12px; }
+  .stat { background:var(--bg-soft); border-left:3px solid var(--pine); padding:22px 22px 20px; border-radius:2px; }
+  .stat .label { font-size:10px; letter-spacing:0.16em; text-transform:uppercase; color:var(--ink-muted); font-weight:700; margin-bottom:10px; }
+  .stat .value { font-family:Georgia,'Times New Roman',serif; font-size:29px; font-weight:600; color:var(--pine); line-height:1.1; margin-bottom:6px; }
+  .stat .value.green { color:var(--positive); }
+  .stat .sub { font-size:12px; color:var(--ink-muted); line-height:1.35; }
+
+  /* TABLES */
+  table { width:100%; border-collapse:collapse; margin:24px 0 8px; font-size:14px; }
+  th { text-align:left; padding:14px 16px; background:var(--pine); color:white; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; font-weight:700; border-right:1px solid rgba(255,255,255,0.15); }
+  th:last-child { border-right:none; }
+  td { padding:13px 16px; border-bottom:1px solid var(--border); color:var(--ink-soft); vertical-align:top; }
+  td:first-child { color:var(--ink); font-weight:500; }
+  tr.total td { background:#F5F1E7; font-weight:700; color:var(--ink); border-top:2px solid var(--brass); border-bottom:2px solid var(--brass); font-size:15px; }
+  tr.total td.savings { color:var(--positive); }
+  td.numeric { text-align:right; font-variant-numeric:tabular-nums; }
+  th.numeric { text-align:right; }
+  td.shopify-col { background:rgba(0,128,96,0.04); }
+  td.savings-positive { color:var(--positive); font-weight:600; }
+  td.rec { background:rgba(181,139,76,0.08); }
+  .footnote-marker { font-size:10px; vertical-align:super; color:var(--pine); font-weight:700; margin-left:2px; }
+  .tbl-note { font-size:13px; color:var(--ink-muted); margin-top:12px; }
+  .flag { display:inline-block; font-size:10px; letter-spacing:0.08em; text-transform:uppercase; font-weight:700; color:var(--warn); background:rgba(180,105,14,0.10); padding:2px 8px; border-radius:3px; margin-left:6px; }
+
+  /* VALUE BLOCKS */
+  .value-block { background:var(--bg-soft); padding:28px 32px; margin:20px 0; border-radius:4px; border-top:3px solid var(--brass); }
+  .value-block h3 { margin-top:0; font-size:19px; }
+  .value-block .impact { font-family:Georgia,serif; font-size:17px; color:var(--ink); line-height:1.5; margin-top:12px; padding-top:14px; border-top:1px solid var(--border); }
+  .value-block .impact strong { color:var(--pine); font-weight:600; }
+
+  /* CHECKLIST */
+  .req-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px 32px; margin-top:20px; }
+  .req { display:flex; gap:12px; align-items:flex-start; }
+  .req .mark { color:var(--shopify-green); font-weight:700; font-size:16px; flex-shrink:0; line-height:1.5; }
+  .req .mark.pending { color:var(--warn); }
+  .req .text { font-size:14px; color:var(--ink-soft); line-height:1.45; }
+  .req .text strong { color:var(--ink); font-weight:600; }
+
+  /* WHY */
+  .why-list { display:grid; grid-template-columns:1fr 1fr; gap:18px 32px; margin-top:20px; }
+  .why-item { display:flex; gap:14px; align-items:flex-start; }
+  .why-item .num { font-family:Georgia,serif; color:var(--pine); font-weight:700; font-size:18px; line-height:1.4; flex-shrink:0; min-width:26px; }
+  .why-item .text { color:var(--ink-soft); font-size:15px; line-height:1.5; }
+  .why-item .text strong { color:var(--ink); font-weight:600; }
+
+  /* TIMELINE */
+  .timeline { margin-top:24px; border-left:2px solid var(--border); padding-left:0; }
+  .tl-item { position:relative; padding:0 0 26px 30px; }
+  .tl-item::before { content:''; position:absolute; left:-7px; top:4px; width:12px; height:12px; border-radius:50%; background:var(--pine); border:2px solid white; }
+  .tl-item.key::before { background:var(--brass); }
+  .tl-date { font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--brass-dark); font-weight:700; margin-bottom:3px; }
+  .tl-title { font-weight:600; color:var(--ink); font-size:15px; }
+  .tl-desc { font-size:13px; color:var(--ink-muted); margin-top:2px; }
+
+  /* ASSUMPTIONS / FOOTNOTES */
+  .assumptions { background:var(--bg-soft); padding:32px 36px; border-radius:4px; border-left:4px solid var(--pine); }
+  .assumptions ul { list-style:none; padding:0; margin:0; columns:2; column-gap:40px; font-size:14px; }
+  .assumptions li { padding:8px 0; color:var(--ink-soft); break-inside:avoid; line-height:1.45; }
+  .assumptions li::before { content:'▪'; color:var(--brass-dark); margin-right:10px; font-size:16px; }
+  .footnotes { font-size:12px; color:var(--ink-muted); margin-top:20px; padding-top:16px; border-top:1px solid var(--border); line-height:1.45; }
+  .footnotes p { font-size:12px; margin-bottom:8px; color:var(--ink-muted); }
+
+  /* FOOTER */
+  footer { background:var(--ink); color:rgba(255,255,255,0.7); padding:40px 0; font-size:13px; }
+  footer .container { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px; }
+  footer .brand-mark { color:var(--brass); font-weight:700; letter-spacing:0.12em; font-size:11px; text-transform:uppercase; }
+  footer .prepared { color:rgba(255,255,255,0.6); font-size:12px; }
+
+  @media print {
+    body { font-size:12pt; }
+    .hero { padding:40px 0; } .hero h1 { font-size:36px; }
+    section { padding:32px 0; page-break-inside:avoid; }
+    h2 { font-size:26px; } table,.value-block,.force { page-break-inside:avoid; }
+  }
+  @media (max-width:800px) {
+    .container { padding:0 24px; }
+    .hero h1 { font-size:34px; } .hero-meta { flex-direction:column; gap:16px; }
+    .headline-grid { grid-template-columns:1fr 1fr; } .forcing-functions { grid-template-columns:1fr; }
+    .assumptions ul { columns:1; } .why-list, .req-grid { grid-template-columns:1fr; } h2 { font-size:28px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="container">
+    <div class="hero-tag">Total Cost of Ownership & Contract Options · Prepared for Todd Helms, Nathan Harris & David Fleisher</div>
+    <h1><span class="brand">Pitkin County Dry Goods</span><br>Shopify POS Business Case</h1>
+    <p class="hero-subtitle">A side-by-side view of contract terms, plan options, and total cost of ownership for moving off TeamWork Commerce to Shopify POS — built for a single-store, luxury multi-brand operation in transition.</p>
+    <div class="hero-meta">
+      <div><div class="label">Prepared by</div><div class="value">Joseph Hemingway · Shopify</div></div>
+      <div><div class="label">Implementation Partner</div><div class="value">Retailogists · Luxury Retail & TeamWork Migration</div></div>
+      <div><div class="label">Target Go-Live</div><div class="value">November 1, 2026</div></div>
+      <div><div class="label">Decision By</div><div class="value">Labor Day Weekend</div></div>
+    </div>
+  </div>
+</header>
+
+<!-- CASE FOR CHANGE -->
+<section>
+  <div class="container">
+    <div class="section-label">The Case for Change</div>
+    <h2>Why this is back at the top of the list.</h2>
+    <p class="lede">The product fit was never the question — the last evaluation stalled only because the urgency cooled. The pressures that started this are all still true, and with the summer season winding down, leadership has asked to <strong>pick the POS decision back up now</strong>. Three forces are driving it regardless of how the ownership transition lands.</p>
+
+    <div class="forcing-functions">
+      <div class="force">
+        <div class="num">01</div>
+        <h4>TeamWork forced an enterprise upgrade</h4>
+        <p>Costs jumped from the ~$1,200–$1,500/mo you used to pay to <strong>$3,000–$3,500/mo</strong> — an enterprise-grade system that's overkill for a single store, at more than double the price.</p>
+      </div>
+      <div class="force">
+        <div class="num">02</div>
+        <h4>Support has gone MIA</h4>
+        <p>Service on the current platform has effectively disappeared. For a store running its highest-volume days on that system, that's an operational risk, not just an inconvenience.</p>
+      </div>
+      <div class="force">
+        <div class="num">03</div>
+        <h4>~30 hours a week of manual entry</h4>
+        <p>Receiving, tagging, and order management run on manual data entry today. That's roughly <strong>30 hours every week</strong> of skilled staff time spent keeping the back office glued together.</p>
+      </div>
+    </div>
+
+    <div class="case-closer">
+      <p>The business is mid-transition to a strategic partner, which calls for <strong>flexibility, not a long lock-in</strong>. Shopify can be contracted for a one-year term now — so you're prepared to move day one — with the option to capture better pricing on a longer term once ownership settles. And your e-commerce site is <strong>already on Shopify</strong>, so unifying retail and online is a short step, not a rebuild.</p>
+    </div>
+  </div>
+</section>
+
+<!-- BOTTOM LINE -->
+<section>
+  <div class="container">
+    <div class="section-label">The Bottom Line</div>
+    <h2>Roughly the same monthly all-in — with real savings, hours back, and no re-platform ahead.</h2>
+    <p class="lede">Against your ~$14M revenue band, Shopify lands at <strong>about the same monthly all-in spend you're at today</strong>, but with roughly <strong>$20,000 a year in real savings</strong> once the hidden TeamWork costs are removed — plus ~30 hours a week of manual entry eliminated and Shopify Payments at <strong>2.3% + 10¢</strong>. The platform fee alone drops from an enterprise tier to a single-store plan, and because Shopify scales with you, this is a decision you don't have to revisit as the business grows.</p>
+
+    <div class="headline-grid">
+      <div class="stat"><div class="label">Net Annual Savings</div><div class="value green">~$20,000</div><div class="sub">All-in, after removing hidden TeamWork costs</div></div>
+      <div class="stat"><div class="label">Staff Time Reclaimed</div><div class="value green">~30 hrs/wk</div><div class="sub">Manual receiving, tagging & order entry eliminated</div></div>
+      <div class="stat"><div class="label">Platform Fee</div><div class="value green">$399/mo</div><div class="sub">Shopify Advanced vs $3,000–$3,500/mo TeamWork</div></div>
+      <div class="stat"><div class="label">Contract Flexibility</div><div class="value">1-Year</div><div class="sub">Start flexible; move to 3-year later for better pricing</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- BUSINESS OVERVIEW -->
+<section>
+  <div class="container">
+    <div class="section-label">What We're Modeling</div>
+    <h2>The footprint behind the numbers.</h2>
+    <p class="lede">Scope is a point-of-sale replacement for a single flagship store plus its warehouse a block away — a luxury, multi-brand operation with a deep, fast-moving catalog.</p>
+    <div class="headline-grid">
+      <div class="stat"><div class="label">Annual Revenue</div><div class="value">~$14M</div><div class="sub">Single Aspen store + warehouse</div></div>
+      <div class="stat"><div class="label">Active SKUs</div><div class="value">~16,000</div><div class="sub">Luxury multi-brand assortment</div></div>
+      <div class="stat"><div class="label">Current Platform</div><div class="value">TeamWork</div><div class="sub">Commerce; Joor feeds inventory</div></div>
+      <div class="stat"><div class="label">E-Commerce</div><div class="value">On Shopify</div><div class="sub">Already live — retail unifies onto it</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- COST COMPARISON -->
+<section>
+  <div class="container">
+    <div class="section-label">Cost Comparison</div>
+    <h2>Shopify POS vs staying on TeamWork Commerce.</h2>
+    <p class="lede">A like-for-like view of the recurring platform and payments cost to run Pitkin County Dry Goods for one year. The platform-fee reduction is the clearest, most defensible line; the net all-in result — about a wash on spend but ~$20K/yr ahead once hidden costs are removed — is what the prior TCO analysis established.</p>
+
+    <table>
+      <thead>
+        <tr><th>Cost Component</th><th class="numeric">Shopify POS</th><th class="numeric">TeamWork Commerce</th><th class="numeric">Difference</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Annual Platform License</td>
+          <td class="numeric shopify-col">$4,788<br><span style="font-size:12px;color:var(--ink-muted);font-weight:400;">Advanced · $399/mo</span></td>
+          <td class="numeric">~$39,000<br><span style="font-size:12px;color:var(--ink-muted);font-weight:400;">~$3,250/mo enterprise tier</span></td>
+          <td class="numeric savings-positive">−~$34,000</td>
+        </tr>
+        <tr>
+          <td>Payment Processing <span class="footnote-marker">†</span></td>
+          <td class="numeric shopify-col">2.3% + 10¢<br><span style="font-size:12px;color:var(--ink-muted);font-weight:400;">Shopify Payments</span></td>
+          <td class="numeric">Current effective rate<span class="flag">confirm</span></td>
+          <td class="numeric">Pending rate comparison</td>
+        </tr>
+        <tr>
+          <td>Hidden costs — support gaps &amp; ~30 hrs/wk manual entry</td>
+          <td class="numeric shopify-col">Eliminated</td>
+          <td class="numeric">Ongoing</td>
+          <td class="numeric savings-positive">Material</td>
+        </tr>
+        <tr class="total">
+          <td>Net All-In Outcome</td>
+          <td class="numeric shopify-col" colspan="2" style="text-align:center;">≈ same monthly spend as today</td>
+          <td class="numeric savings">~$20,000/yr ahead</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="tbl-note"><strong>†</strong> A precise processing comparison depends on your current effective TeamWork/processor rate — bring that figure and we'll finalize the payments line live on the call.</p>
+  </div>
+</section>
+
+<!-- CONTRACT OPTIONS -->
+<section>
+  <div class="container">
+    <div class="section-label">Contract Options — Your Specific Ask</div>
+    <h2>1-year vs 3-year, side by side.</h2>
+    <p class="lede">Because a strategic partner or new owner may not be finalized until around Labor Day, the goal is to be <strong>ready to move day one without over-committing</strong>. Here's how the two terms compare.</p>
+
+    <table>
+      <thead>
+        <tr><th>Consideration</th><th>1-Year Term</th><th>3-Year Term</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Monthly commitment on paper</td><td class="rec">~$400–$500/mo (Advanced)</td><td>Lower effective rate available</td></tr>
+        <tr><td>Flexibility during ownership transition</td><td class="rec">Maximum — minimal lock-in for investors to worry about</td><td>Longer commitment; less ideal mid-transition</td></tr>
+        <tr><td>Pricing advantage</td><td>Standard</td><td>Preferred pricing / cost advantages at longer term</td></tr>
+        <tr><td>Path forward</td><td class="rec">Convert to 3-year later once ownership settles</td><td>Best once the business structure is confirmed</td></tr>
+        <tr><td>Investor / due-diligence risk</td><td class="rec">Low — small, non-onerous obligation on paper</td><td>Higher — a multi-year liability to disclose</td></tr>
+      </tbody>
+    </table>
+    <p class="tbl-note"><span style="color:var(--brass-dark);font-weight:700;">Recommendation:</span> start on a <strong>1-year term</strong> for flexibility now, then move to a 3-year agreement in ~6 months once the transition clears — capturing the cost advantages without locking in during uncertainty.</p>
+  </div>
+</section>
+
+<!-- PLAN OPTIONS -->
+<section>
+  <div class="container">
+    <div class="section-label">Plan Options</div>
+    <h2>Advanced vs Plus — the build cost is the same either way.</h2>
+    <p class="lede">An important point for planning: <strong>the implementation effort doesn't change based on plan</strong> — it's driven by the number of dev hours, not by Advanced vs Plus. So the plan choice is purely about the features and headroom you want, not the cost of the build.</p>
+
+    <table>
+      <thead>
+        <tr><th>&nbsp;</th><th>Shopify Advanced</th><th>Shopify Plus</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Best fit</td><td class="rec">Single-store operation, lean monthly cost</td><td>Enterprise features, multi-store & scale headroom</td></tr>
+        <tr><td>Monthly platform fee</td><td class="rec">~$399/mo</td><td>Higher (enterprise tier)</td></tr>
+        <tr><td>POS capabilities</td><td>POS Pro — full retail feature set</td><td>POS Pro + enterprise controls</td></tr>
+        <tr><td>Implementation / build cost</td><td colspan="2" style="text-align:center;background:rgba(181,139,76,0.08);">Identical — determined by dev hours, not plan</td></tr>
+        <tr><td>When to choose</td><td class="rec">If a single flagship store is the plan</td><td>If rapid multi-store expansion is on the horizon</td></tr>
+      </tbody>
+    </table>
+    <p class="tbl-note">For a single-store footprint today, <strong>Advanced</strong> is the efficient starting point; Plus is there the moment growth or the new ownership's plans call for it — with no re-platform required to step up.</p>
+  </div>
+</section>
+
+<!-- RETAILOGISTS -->
+<section>
+  <div class="container">
+    <div class="section-label">Implementation Partner</div>
+    <h2>Retailogists — a white-glove, phased migration.</h2>
+    <p class="lede">Retailogists (Lea &amp; Vincent Younan's team, out of Montreal) specialize in <strong>luxury retail and TeamWork Commerce migrations</strong> — exactly your profile. They lead a phased, crawl-walk-run rollout so nothing flips overnight, with the phases written <strong>explicitly into the contract</strong> — directly addressing the "phase two that never happened" experience with TeamWork.</p>
+
+    <div class="value-block">
+      <h3>One-time implementation investment</h3>
+      <p>The Retailogists build covers data migration off TeamWork, POS configuration (products, taxes, staff, tags), unifying your existing Shopify storefront with POS inventory, and label-printing setup.</p>
+      <div class="impact">
+        Estimated one-time implementation: <strong>[ Retailogists SOW — insert confirmed estimate ]</strong>. <span class="flag">fill before sending</span> Build cost is the same whether you choose Advanced or Plus.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPETITIVE -->
+<section>
+  <div class="container">
+    <div class="section-label">Competitive View</div>
+    <h2>Shopify vs Lightspeed vs Square.</h2>
+    <p class="lede">David asked you to weigh one or two other systems. On price, everyone in your size band lands in a similar range — so the real decision is which platform you'll <strong>never have to leave</strong> as the business grows and modernizes.</p>
+
+    <table>
+      <thead>
+        <tr><th>Factor</th><th>Shopify</th><th>Lightspeed</th><th>Square</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Best for</td><td class="rec">Growing, multi-brand retail that also sells online</td><td>Traditional retail POS</td><td>Very small / simple retail</td></tr>
+        <tr><td>Future-proof / scalability</td><td class="rec">No re-platform as you scale — POS, online, B2B on one platform</td><td>Can hit ceilings; add-ons stack up</td><td>Outgrown quickly by luxury multi-brand at 16K SKUs</td></tr>
+        <tr><td>Online + in-store unified</td><td class="rec">Native — your ecom is already on Shopify</td><td>Separate ecom product</td><td>Basic online, limited depth</td></tr>
+        <tr><td>Reporting depth (dissect the business)</td><td class="rec">Deep analytics + open-to-buy at retail</td><td>Strong retail reporting</td><td>Limited for complex assortments</td></tr>
+        <tr><td>Hardware compatibility path</td><td class="rec">Confirmed in scope (printer, readers, labels)</td><td>Proprietary hardware bias</td><td>Square-only hardware</td></tr>
+        <tr><td>App / integration ecosystem</td><td class="rec">7,000+ apps; Joor, QuickBooks, commission tools</td><td>Moderate</td><td>Smaller ecosystem</td></tr>
+        <tr><td>Migration support</td><td class="rec">Retailogists — luxury + TeamWork specialists, phased & contractual</td><td>Varies by partner</td><td>Largely self-serve</td></tr>
+      </tbody>
+    </table>
+    <p class="tbl-note">The through-line: Lightspeed and Square can run a store today, but the last thing you want mid-transition is to pick a system, start scaling, and have to re-platform again. With Shopify, once you're on, you effectively never outgrow it.</p>
+  </div>
+</section>
+
+<!-- REQUIREMENTS COVERAGE -->
+<section>
+  <div class="container">
+    <div class="section-label">Requirements Coverage</div>
+    <h2>Your confirmed must-haves, mapped.</h2>
+    <p class="lede">Everything the team flagged as non-negotiable is either native or covered by a vetted app — with one item still being finalized by our SE.</p>
+
+    <div class="req-grid">
+      <div class="req"><div class="mark">✓</div><div class="text"><strong>Split commission tracking</strong> (1.5%, team selling) — ~80% native + Shopify app</div></div>
+      <div class="req"><div class="mark">✓</div><div class="text"><strong>Offline mode</strong> — covered</div></div>
+      <div class="req"><div class="mark">✓</div><div class="text"><strong>CSV item-by-item discount upload</strong>, pre-applied to sale price</div></div>
+      <div class="req"><div class="mark">✓</div><div class="text"><strong>Joor integration</strong> — 80% of brands, via Joor Retailer Product Sync</div></div>
+      <div class="req"><div class="mark">✓</div><div class="text"><strong>Open-to-buy reporting at retail price</strong> (not cost)</div></div>
+      <div class="req"><div class="mark">✓</div><div class="text"><strong>Real-time register sync</strong></div></div>
+      <div class="req"><div class="mark">✓</div><div class="text"><strong>Custom product tags</strong> (date received, unique PLU not UPC)</div></div>
+      <div class="req"><div class="mark">✓</div><div class="text"><strong>QuickBooks / BusinessWorks</strong> accounting integration</div></div>
+      <div class="req"><div class="mark pending">◐</div><div class="text"><strong>Label printing</strong> — matching your current templates 1:1; app vs custom being confirmed by our SE <span class="flag">in progress</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section>
+  <div class="container">
+    <div class="section-label">Path to Go-Live</div>
+    <h2>Working backward from November 1.</h2>
+    <p class="lede">A November 1 go-live lands squarely in your quiet fall window — well before business picks up on December 10 — and gives room to plan staff schedules and vacations. To hit it, the platform decision needs to be made by <strong>Labor Day weekend</strong>.</p>
+
+    <div class="timeline">
+      <div class="tl-item key"><div class="tl-date">Today · Aug 12</div><div class="tl-title">TCO & contract-options review</div><div class="tl-desc">Walk this analysis; confirm open questions and any competitor comparisons.</div></div>
+      <div class="tl-item"><div class="tl-date">Late August</div><div class="tl-title">Finish evaluation & close open loops</div><div class="tl-desc">Todd & Nathan review Lightspeed/Square; Shopify resolves label printing + remaining questions.</div></div>
+      <div class="tl-item key"><div class="tl-date">Labor Day Weekend</div><div class="tl-title">Platform decision + Retailogists SOW signed</div><div class="tl-desc">Ownership clarity expected; commit to platform and sign the phased implementation SOW.</div></div>
+      <div class="tl-item"><div class="tl-date">September</div><div class="tl-title">Kickoff, migration & configuration</div><div class="tl-desc">Retailogists lead data migration, POS setup, and unify storefront with POS inventory (6–8 wks).</div></div>
+      <div class="tl-item"><div class="tl-date">October</div><div class="tl-title">Staff training, UAT & launch readiness</div><div class="tl-desc">In-store testing on POS workflows, returns, exchanges; label printing signed off.</div></div>
+      <div class="tl-item key"><div class="tl-date">November 1</div><div class="tl-title">Go live on Shopify POS</div><div class="tl-desc">Launch in the quiet season, no rush against peak.</div></div>
+      <div class="tl-item"><div class="tl-date">December 10+</div><div class="tl-title">Peak season, validated</div><div class="tl-desc">Fully live and settled before your busiest stretch.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY SHOPIFY -->
+<section>
+  <div class="container">
+    <div class="section-label">Why Shopify</div>
+    <h2>Built for a single luxury store that intends to grow.</h2>
+    <div class="why-list">
+      <div class="why-item"><div class="num">01</div><div class="text"><strong>Future-proof — no re-platform.</strong> Once you're on Shopify, you effectively never outgrow it, even through an ownership change and scale-up.</div></div>
+      <div class="why-item"><div class="num">02</div><div class="text"><strong>Retail + online already unified.</strong> Your e-commerce site is on Shopify today; adding POS makes one system of record, not two.</div></div>
+      <div class="why-item"><div class="num">03</div><div class="text"><strong>White-glove, phased migration.</strong> Retailogists specialize in luxury + TeamWork migrations, with phases written into the contract.</div></div>
+      <div class="why-item"><div class="num">04</div><div class="text"><strong>~30 hours a week back.</strong> Automating manual receiving, tagging, and order entry returns real capacity to your team.</div></div>
+      <div class="why-item"><div class="num">05</div><div class="text"><strong>Reporting to dissect the business.</strong> Open-to-buy at retail, deep analytics, and the metrics you need to plan growth.</div></div>
+      <div class="why-item"><div class="num">06</div><div class="text"><strong>Flexible contracting.</strong> A 1-year term keeps you nimble through the transition, with a clean path to better 3-year pricing later.</div></div>
+      <div class="why-item"><div class="num">07</div><div class="text"><strong>Same monthly all-in, ~$20K/yr ahead.</strong> Roughly today's spend, but with real savings once hidden TeamWork costs are removed.</div></div>
+      <div class="why-item"><div class="num">08</div><div class="text"><strong>Ecosystem that fits your stack.</strong> Joor, QuickBooks, commission tracking, and 7,000+ apps — no bespoke glue code.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="brand-mark">Pitkin County Dry Goods × Shopify × Retailogists</div>
+    <div class="prepared">Prepared by Joseph Hemingway · Shopify · joseph.hemingway@shopify.com</div>
+  </div>
+</footer>
+
+</body>
+</html>
